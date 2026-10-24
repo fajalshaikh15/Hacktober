@@ -80,6 +80,7 @@ function Hero({ rows, crop, setCrop, live }: { rows: PriceRow[]; crop: string; s
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#prices" className="rounded-md bg-accent px-5 py-3 font-semibold text-accent-foreground">See prices</a>
             <a href="#profit" className="rounded-md border border-primary-foreground/50 px-5 py-3 font-semibold">Work out profit</a>
+            <Link to="/marketplace" className="rounded-md bg-primary-foreground px-5 py-3 font-semibold text-primary">Bulk Buyer Marketplace</Link>
           </div>
         </div>
         <div className="card-soft p-6 text-card-foreground">
