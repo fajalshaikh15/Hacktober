@@ -12,7 +12,7 @@ export type PriceRow = {
 export type PriceResult = {
   rows: PriceRow[];
   live: boolean;
-  note?: string;
+  note: string;
 };
 
 export const CROPS = [

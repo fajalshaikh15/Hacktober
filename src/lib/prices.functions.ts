@@ -36,7 +36,7 @@ export const getPrices = createServerFn({ method: "GET" })
         }))
         .filter((r) => r.market && r.modal > 0);
       if (!rows.length) return fallback("No live records today for this crop — showing sample prices.");
-      return { rows, live: true };
+      return { rows, live: true, note: "" };
     } catch {
       return fallback("Could not reach the price service — showing sample prices.");
     }
