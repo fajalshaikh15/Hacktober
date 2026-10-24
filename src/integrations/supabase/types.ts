@@ -14,13 +14,154 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      delivery_requests: {
+        Row: {
+          buyer_address: string
+          buyer_name: string
+          buyer_phone: string
+          buyer_token: string
+          created_at: string
+          delivery_charges: number | null
+          id: string
+          listing_id: string
+          produce_cost: number
+          quantity_quintals: number
+          status: string
+          total_price: number | null
+          updated_at: string
+        }
+        Insert: {
+          buyer_address: string
+          buyer_name: string
+          buyer_phone: string
+          buyer_token?: string
+          created_at?: string
+          delivery_charges?: number | null
+          id?: string
+          listing_id: string
+          produce_cost: number
+          quantity_quintals: number
+          status?: string
+          total_price?: number | null
+          updated_at?: string
+        }
+        Update: {
+          buyer_address?: string
+          buyer_name?: string
+          buyer_phone?: string
+          buyer_token?: string
+          created_at?: string
+          delivery_charges?: number | null
+          id?: string
+          listing_id?: string
+          produce_cost?: number
+          quantity_quintals?: number
+          status?: string
+          total_price?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "delivery_requests_listing_id_fkey"
+            columns: ["listing_id"]
+            isOneToOne: false
+            referencedRelation: "market_listings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_listings: {
+        Row: {
+          created_at: string
+          crop: string
+          farm_name: string
+          farmer_id: string
+          id: string
+          last_bucket: number
+          location: string
+          min_order_quintals: number
+          price_per_quintal: number
+          quantity_quintals: number
+          updated_at: string
+          variety: string | null
+        }
+        Insert: {
+          created_at?: string
+          crop: string
+          farm_name: string
+          farmer_id: string
+          id?: string
+          last_bucket?: number
+          location: string
+          min_order_quintals?: number
+          price_per_quintal: number
+          quantity_quintals?: number
+          updated_at?: string
+          variety?: string | null
+        }
+        Update: {
+          created_at?: string
+          crop?: string
+          farm_name?: string
+          farmer_id?: string
+          id?: string
+          last_bucket?: number
+          location?: string
+          min_order_quintals?: number
+          price_per_quintal?: number
+          quantity_quintals?: number
+          updated_at?: string
+          variety?: string | null
+        }
+        Relationships: []
+      }
+      stock_notifications: {
+        Row: {
+          bucket: number
+          created_at: string
+          crop: string
+          id: string
+          listing_id: string
+          location: string
+          remaining_quintals: number
+        }
+        Insert: {
+          bucket: number
+          created_at?: string
+          crop: string
+          id?: string
+          listing_id: string
+          location: string
+          remaining_quintals: number
+        }
+        Update: {
+          bucket?: number
+          created_at?: string
+          crop?: string
+          id?: string
+          listing_id?: string
+          location?: string
+          remaining_quintals?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stock_notifications_listing_id_fkey"
+            columns: ["listing_id"]
+            isOneToOne: false
+            referencedRelation: "market_listings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      decrement_stock: {
+        Args: { p_listing_id: string; p_qty: number }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
