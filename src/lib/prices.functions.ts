@@ -22,11 +22,11 @@ export const getPrices = createServerFn({ method: "GET" })
       url.searchParams.set("filters[commodity]", data.crop);
       const res = await fetch(url);
       if (!res.ok) return fallback(`Live prices unavailable (${res.status}) — showing sample prices.`);
-      const json = (await res.json()) as { records?: Record<string, string>[] };
+      const json = (await res.json()) as { records?: Partial<Record<"market" | "state" | "district" | "variety" | "modal_price" | "min_price" | "max_price" | "arrival_date", string>>[] };
       const rows: PriceRow[] = (json.records ?? [])
         .map((r) => ({
-          market: r.market,
-          state: r.state,
+          market: r.market ?? "",
+          state: r.state ?? "",
           district: r.district,
           variety: r.variety,
           modal: Number(r.modal_price),

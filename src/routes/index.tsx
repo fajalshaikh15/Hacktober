@@ -34,7 +34,7 @@ function Index() {
   return (
     <main className="font-sans">
       <Hero rows={rows} crop={crop} setCrop={setCrop} live={!!data?.live} />
-      <PriceTable rows={rows} crop={crop} setCrop={setCrop} loading={isLoading} live={!!data?.live} note={data?.note} />
+      <PriceTable rows={rows} crop={crop} setCrop={setCrop} loading={isLoading} live={!!data?.live} note={data?.note ?? ""} />
       <ProfitCalc rows={rows} />
       <Destinations rows={rows} crop={crop} />
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">

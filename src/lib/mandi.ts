@@ -1,12 +1,12 @@
 export type PriceRow = {
   market: string;
   state: string;
-  district?: string;
-  variety?: string;
+  district?: string | undefined;
+  variety?: string | undefined;
   modal: number;
-  min?: number;
-  max?: number;
-  date?: string;
+  min?: number | undefined;
+  max?: number | undefined;
+  date?: string | undefined;
 };
 
 export type PriceResult = {
