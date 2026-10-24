@@ -239,7 +239,7 @@ function MyRequestCard({ req, token }: { req: BuyerRequestView; token: string })
   const qc = useQueryClient();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const act = async (fn: typeof confirmOrder) => {
+  const act = async (fn: typeof confirmOrder | typeof declineOrder) => {
     setBusy(true);
     setError("");
     try {
